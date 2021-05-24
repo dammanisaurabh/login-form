@@ -7,6 +7,32 @@
     border: 5px solid $primary-theme;
     padding: 48px 30px 12px 30px;
     width: 300px;
+
+    p {
+        font-size: 22px;
+        line-height: 28px;
+        color: $black-color;
+        text-align: center;
+    }
+
+    .password-header {
+        display: flex;
+        margin-bottom: 24px;
+        .welcome-container {
+            flex: auto;
+        }
+    }
+
+    .username {
+        font-size: 14px;
+        line-height: 20px;
+        color: $autodesk-user-type-color;
+    }
+    .back-icon {
+        font-size: 36px;
+        cursor: pointer;
+        color: $primary-theme;
+    }
 }
 
 h3 {

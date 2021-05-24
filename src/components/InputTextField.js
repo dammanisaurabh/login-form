@@ -2,7 +2,6 @@ import '../styles/InputTextField.scss';
 
 export const Input = ({ label, type="text", value, handleChange, id, name, className = '', error='', isTouched=false }) => {
   const enhancedClass = `input-container ${className}` ;
-  console.log(error, isTouched)
   return(
     <div className={enhancedClass}>
       <label htmlFor={id}>{label}</label>

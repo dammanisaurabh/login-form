@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Input } from './InputTextField';
 import { createUserFields, fieldDetails } from '../helpers/fieldsMapping';
 import { validate } from '../helpers/validationHelper';
+import firebase from '../firebase';
 import '../styles/CreateAccount.scss';
 
 const initialUserState = {
@@ -14,17 +15,20 @@ const initialUserState = {
 }
 
 export const CreateAccount = ({ handleCreateAccountClick }) => {
-  const [showSuccessMessage, setSuccessStatus] = useState(true);
-useEffect(() => {
-  if (showSuccessMessage) {
-    setTimeout(() => {
+  const [showSuccessMessage, setSuccessStatus] = useState(false);
+  useEffect(() => {
+    const timer = () => setTimeout(() => {
       setSuccessStatus(false);
     }, 5000);
-  }
-}, [showSuccessMessage, setSuccessStatus])
+    if (showSuccessMessage) {
+      timer();
+    }
+    return () => clearTimeout(timer);
+  }, [showSuccessMessage, setSuccessStatus])
 
   const [user, setUser] = useState(initialUserState);
-  const handleSubmit = event => {
+
+  const handleSubmit = async event => {
     event.preventDefault();
     let anyError = false;
     const updatedUser = Object.keys(user).reduce((acc, name) => {
@@ -40,7 +44,23 @@ useEffect(() => {
       };
     }, {});
     if (!anyError) {
-      setSuccessStatus(true);
+      try {
+        const users = firebase.firestore().collection('Users');
+        const newDoc = users.doc();
+        const response = await users.doc(newDoc.id).set({
+          username: user.username.value,
+          password: user.password.value,
+          firstname: user.firstname.value,
+          lastname: user.lastname.value,
+          isActive: true,
+          id: newDoc.id,
+        });
+        setSuccessStatus(true);
+      }
+      catch(e) {
+        throw new Error('Something went wrong');
+      }
+      
     } else {
       setUser(updatedUser);
     }

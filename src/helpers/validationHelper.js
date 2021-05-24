@@ -1,6 +1,10 @@
-export const required = value => value ? '' : 'Please enter your';
+import { errorMessages } from './constants';
 
-export const duplicateCheck = (value, parentValue) => value === parentValue ? "" : 'Please enter the same';
+const { requiredDetails, duplicate } = errorMessages;
+
+export const required = value => value ? '' : requiredDetails;
+
+export const duplicateCheck = (value, parentValue) => value === parentValue ? "" : duplicate;
 
 export const validate = (name, value, user) => {
     let error = required(value);
