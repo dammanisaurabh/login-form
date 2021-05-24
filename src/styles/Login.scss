@@ -1,0 +1,16 @@
+@import './Common.scss';
+
+.login-container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid $primary-theme;
+    padding: 48px 30px 12px 30px;
+    width: 300px;
+}
+
+h3 {
+    font-size: 22px;
+    line-height: 28px;
+    color: $black-color;
+}

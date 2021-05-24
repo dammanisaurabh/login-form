@@ -1,0 +1,61 @@
+$black-color: #000000;
+$primary-theme: #0696d7;
+$primary-text-color: #3c3c3c;
+$primary-button-text: #ffffff;
+$error-message-color:#666666;
+$error-message-backgroun-color: #ece7e7;
+$link-color: #006eaf;
+$autodesk-user-type-color: #808080;
+$primary-footer-color: #999999;
+$success-message-background: #38abdf;
+
+.btn-primary {
+    width: 100% ;
+    padding: 8px ;
+    background-color: $primary-theme;
+    color: $primary-button-text;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    grid-area: button;
+  }
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 20px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .autodesk-user-type {
+    font-size: 14px;
+    line-height: 20px;
+    color: $autodesk-user-type-color;
+    margin-right: 5px;
+  }
+
+  .sign-in {
+    grid-area: signIn;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  body {
+    min-height: 100%;
+    position: relative;
+  }
+}
+
+#root {
+  min-height: 100%;
+}

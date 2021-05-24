@@ -1,0 +1,63 @@
+@import './Common.scss';
+
+.create-user-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:"success success"
+                        "none none" 
+                        "firstname lastname"
+                         "username username"
+                         "reUsername reUsername"
+                         "password password"
+                         "rePassword rePassword"
+                         "button button"
+                         "signIn signIn"
+                         "footer footer"
+    ;
+    grid-column-gap: 12px;
+    border: 5px solid $primary-theme;
+    padding: 48px 30px 12px 30px;
+    width: 400px;
+    
+    .footer {
+        grid-area: footer;
+    }
+
+    .success-message {
+        grid-area: success;
+    }
+
+    .success-message {
+        font-size: 16px;
+        line-height: 22px;
+        color: $black-color;
+        background-color: $success-message-background;
+        opacity: 0.7;
+        border-radius: 4px;
+        padding: 8px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .create-user-container {
+        width: 100%;
+        box-sizing: border-box;
+        grid-template-columns: 1fr;
+        grid-template-areas:"none" 
+                        "firstname"
+                        "lastname"
+                         "username"
+                         "reUsername"
+                         "password"
+                         "rePassword"
+                         "button"
+                         "signIn"
+                         "footer"
+    ;
+    }
+    form {
+        width: 100%;
+    }
+}
